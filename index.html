@@ -615,18 +615,18 @@ footer{
     <li><a href="#contacto" onclick="setActive(this)" data-i18n="nav_contacto">Contacto</a></li>
   </ul>
   <div class="nav-reserva-wrap" style="display:flex;gap:12px;align-items:center">
-    <div class="lang-selector" id="langSelector">
-      <button class="lang-btn" onclick="toggleLang(event)">
+    <div style="position:relative;display:inline-block" id="langSelector">
+      <button onclick="document.getElementById('langMenu').style.display=document.getElementById('langMenu').style.display==='block'?'none':'block'" style="background:none;border:1px solid rgba(107,66,38,.3);border-radius:20px;padding:6px 14px;cursor:pointer;font-size:.8rem;color:var(--brown2);display:flex;align-items:center;gap:6px">
         <span id="currentFlag">🇪🇸</span>
         <span id="currentLang">ES</span>
-        <span style="font-size:.6rem;opacity:.5">▼</span>
+        <span style="font-size:.55rem;opacity:.5">▼</span>
       </button>
-      <div class="lang-dropdown">
-        <button class="lang-option active" onclick="setLang('es')"><span class="lang-flag">🇪🇸</span>Castellano</button>
-        <button class="lang-option" onclick="setLang('ca')"><span class="lang-flag">🇻🇦</span>Valencià</button>
-        <button class="lang-option" onclick="setLang('en')"><span class="lang-flag">🇬🇧</span>English</button>
-        <button class="lang-option" onclick="setLang('fr')"><span class="lang-flag">🇫🇷</span>Français</button>
-        <button class="lang-option" onclick="setLang('de')"><span class="lang-flag">🇩🇪</span>Deutsch</button>
+      <div id="langMenu" style="display:none;position:absolute;top:calc(100% + 8px);right:0;background:#fdf8f3;border:1px solid rgba(107,66,38,.15);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);overflow:hidden;z-index:9999;min-width:170px">
+        <button onclick="setLang('es')" style="display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;font-size:.82rem;color:var(--dark2);border:none;background:none;width:100%;text-align:left">🇪🇸 Castellano</button>
+        <button onclick="setLang('ca')" style="display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;font-size:.82rem;color:var(--dark2);border:none;background:none;width:100%;text-align:left">🇻🇦 Valencià</button>
+        <button onclick="setLang('en')" style="display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;font-size:.82rem;color:var(--dark2);border:none;background:none;width:100%;text-align:left">🇬🇧 English</button>
+        <button onclick="setLang('fr')" style="display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;font-size:.82rem;color:var(--dark2);border:none;background:none;width:100%;text-align:left">🇫🇷 Français</button>
+        <button onclick="setLang('de')" style="display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;font-size:.82rem;color:var(--dark2);border:none;background:none;width:100%;text-align:left">🇩🇪 Deutsch</button>
       </div>
     </div>
     <a href="https://www.instagram.com/saor.restaurant/" target="_blank" class="social-link" style="font-size:.6rem;letter-spacing:.12em;color:var(--brown2)">
@@ -1993,7 +1993,7 @@ function setLang(lang) {
   });
 
   // Cerrar dropdown
-  document.getElementById('langSelector').classList.remove('open');
+  document.getElementById('langMenu').style.display='none';
 
   // Aplicar traducciones a elementos con data-i18n
   document.querySelectorAll('[data-i18n]').forEach(function(el) {
