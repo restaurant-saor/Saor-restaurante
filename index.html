@@ -600,6 +600,17 @@ footer{
 .lang-option.active{font-weight:600;color:var(--rust)}
 .lang-flag{font-size:1.1rem}
 </style>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'es',
+    includedLanguages: 'ca,en,fr,de',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
 
@@ -622,12 +633,13 @@ footer{
         <span style="font-size:.55rem;opacity:.5">▼</span>
       </button>
       <div id="langMenu" style="display:none;position:absolute;top:calc(100% + 8px);right:0;background:#fdf8f3;border:1px solid rgba(107,66,38,.15);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);overflow:hidden;z-index:9999;min-width:170px">
-        <button onclick="setLang('es')" style="display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;font-size:.82rem;color:var(--dark2);border:none;background:none;width:100%;text-align:left">🇪🇸 Castellano</button>
-        <button onclick="setLang('ca')" style="display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;font-size:.82rem;color:var(--dark2);border:none;background:none;width:100%;text-align:left">🇻🇦 Valencià</button>
-        <button onclick="setLang('en')" style="display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;font-size:.82rem;color:var(--dark2);border:none;background:none;width:100%;text-align:left">🇬🇧 English</button>
-        <button onclick="setLang('fr')" style="display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;font-size:.82rem;color:var(--dark2);border:none;background:none;width:100%;text-align:left">🇫🇷 Français</button>
-        <button onclick="setLang('de')" style="display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;font-size:.82rem;color:var(--dark2);border:none;background:none;width:100%;text-align:left">🇩🇪 Deutsch</button>
+        <button onclick="translateTo('es','🇪🇸','ES')" style="display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;font-size:.82rem;color:var(--dark2);border:none;background:none;width:100%;text-align:left">🇪🇸 Castellano</button>
+        <button onclick="translateTo('ca','🇻🇦','VAL')" style="display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;font-size:.82rem;color:var(--dark2);border:none;background:none;width:100%;text-align:left">🇻🇦 Valencià</button>
+        <button onclick="translateTo('en','🇬🇧','EN')" style="display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;font-size:.82rem;color:var(--dark2);border:none;background:none;width:100%;text-align:left">🇬🇧 English</button>
+        <button onclick="translateTo('fr','🇫🇷','FR')" style="display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;font-size:.82rem;color:var(--dark2);border:none;background:none;width:100%;text-align:left">🇫🇷 Français</button>
+        <button onclick="translateTo('de','🇩🇪','DE')" style="display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;font-size:.82rem;color:var(--dark2);border:none;background:none;width:100%;text-align:left">🇩🇪 Deutsch</button>
       </div>
+      <div id="google_translate_element" style="display:none"></div>
     </div>
     <a href="https://www.instagram.com/saor.restaurant/" target="_blank" class="social-link" style="font-size:.6rem;letter-spacing:.12em;color:var(--brown2)">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
@@ -1783,5 +1795,46 @@ function setLang(lang){
 }
 </script>
 
+<script>
+function translateTo(lang, flag, code) {
+  document.getElementById('currentFlag').textContent = flag;
+  document.getElementById('currentLang').textContent = code;
+  document.getElementById('langMenu').style.display = 'none';
+  
+  if (lang === 'es') {
+    // Volver al español original
+    var frame = document.querySelector('.goog-te-banner-frame');
+    if (frame) {
+      var restore = frame.contentDocument.querySelector('.goog-te-banner-close') || 
+                    frame.contentDocument.querySelector('#restore');
+      if (restore) restore.click();
+    }
+    var cookie = document.cookie;
+    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + location.hostname;
+    location.reload();
+    return;
+  }
+  
+  // Usar Google Translate
+  var select = document.querySelector('.goog-te-combo');
+  if (select) {
+    select.value = lang;
+    select.dispatchEvent(new Event('change'));
+  } else {
+    // Fallback: usar cookie de Google Translate
+    document.cookie = 'googtrans=/es/' + lang + '; path=/';
+    document.cookie = 'googtrans=/es/' + lang + '; path=/; domain=' + location.hostname;
+    location.reload();
+  }
+}
+
+// Ocultar la barra de Google Translate
+window.addEventListener('load', function() {
+  var style = document.createElement('style');
+  style.textContent = '.goog-te-banner-frame{display:none!important} body{top:0!important} .goog-te-gadget{display:none!important} #goog-gt-tt{display:none!important} .goog-te-balloon-frame{display:none!important}';
+  document.head.appendChild(style);
+});
+</script>
 </body>
 </html>
