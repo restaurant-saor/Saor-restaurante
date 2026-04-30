@@ -1760,242 +1760,25 @@ function abrirCookies(e){
 </script>
 
 <script>
-// ── SISTEMA DE TRADUCCIÓN ──
-var translations = {
-  es: {
-    // Nav
-    nav_carta: 'Carta',
-    nav_menu: 'Menú del Día',
-    nav_pizza: 'Pizza del Mes',
-    nav_historia: 'Nuestra Historia',
-    nav_reservas: 'Reservas',
-    nav_contacto: 'Contacto',
-    nav_reservar: 'Reservar',
-    // Hero
-    hero_eyebrow: 'Pizzeria Restaurante · Benlloc, Castellón',
-    hero_title: 'Sabor auténtico,<br>alma italiana',
-    hero_sub: 'Pizza artesana, cocina de mercado y producto local.<br>En el corazón de la Plana Alta.',
-    hero_btn1: 'Ver la carta',
-    hero_btn2: 'Reservar mesa',
-    takeaway: '🛵 También hacemos Take Away · Llámanos al',
-    // Secciones
-    carta_eyebrow: 'Lo que cocinamos',
-    carta_title: 'Nuestra Carta',
-    tab_vsab: 'Viernes & Sábado',
-    tab_jdom: 'Jueves & Domingo',
-    tab_vinos: 'Vinos & Vermuts',
-    menu_eyebrow: 'De lunes a viernes',
-    menu_title: 'Menú del Día',
-    pizza_eyebrow: 'Exclusiva · Solo este mes',
-    pizza_title: 'Pizza del Mes',
-    historia_eyebrow: 'Quiénes somos',
-    historia_title: 'Nuestra Historia',
-    reservas_eyebrow: 'Te esperamos',
-    reservas_title: 'Reserva tu Mesa',
-    contacto_eyebrow: 'Dónde estamos',
-    contacto_title: 'Contacto',
-    // Horarios
-    lunes: 'Lunes', martes: 'Martes', miercoles: 'Miércoles',
-    jueves: 'Jueves', viernes: 'Viernes', sabado: 'Sábado', domingo: 'Domingo',
-    cerrado: 'Cerrado', abierto: 'Abierto',
-    // Reservas
-    res_tel_title: 'Por Teléfono',
-    res_tel_desc: 'Llámanos y te confirmamos la disponibilidad al momento.',
-    res_tel_btn: 'Llamar ahora',
-    res_wa_title: 'Por WhatsApp',
-    res_wa_desc: 'Escríbenos un mensaje y te confirmamos la reserva enseguida.',
-    res_wa_btn: 'Abrir WhatsApp',
-  },
-  ca: {
-    nav_carta: 'Carta',
-    nav_menu: 'Menú del Dia',
-    nav_pizza: 'Pizza del Mes',
-    nav_historia: 'La Nostra Història',
-    nav_reservas: 'Reserves',
-    nav_contacto: 'Contacte',
-    nav_reservar: 'Reservar',
-    hero_eyebrow: 'Pizzeria Restaurant · Benlloc, Castelló',
-    hero_title: 'Sabor autèntic,<br>ànima italiana',
-    hero_sub: 'Pizza artesana, cuina de mercat i producte local.<br>Al cor de la Plana Alta.',
-    hero_btn1: 'Veure la carta',
-    hero_btn2: 'Reservar taula',
-    takeaway: '🛵 També fem Take Away · Truca'ns al',
-    carta_eyebrow: 'El que cuinem',
-    carta_title: 'La Nostra Carta',
-    tab_vsab: 'Divendres & Dissabte',
-    tab_jdom: 'Dijous & Diumenge',
-    tab_vinos: 'Vins & Vermuts',
-    menu_eyebrow: 'De dilluns a divendres',
-    menu_title: 'Menú del Dia',
-    pizza_eyebrow: 'Exclusiva · Només aquest mes',
-    pizza_title: 'Pizza del Mes',
-    historia_eyebrow: 'Qui som',
-    historia_title: 'La Nostra Història',
-    reservas_eyebrow: 'T'esperem',
-    reservas_title: 'Reserva la Taula',
-    contacto_eyebrow: 'Troba'ns',
-    contacto_title: 'Contacte',
-    lunes: 'Dilluns', martes: 'Dimarts', miercoles: 'Dimecres',
-    jueves: 'Dijous', viernes: 'Divendres', sabado: 'Dissabte', domingo: 'Diumenge',
-    cerrado: 'Tancat', abierto: 'Obert',
-    res_tel_title: 'Per Telèfon',
-    res_tel_desc: 'Truca'ns i et confirmem la disponibilitat al moment.',
-    res_tel_btn: 'Trucar ara',
-    res_wa_title: 'Per WhatsApp',
-    res_wa_desc: 'Escriu-nos un missatge i et confirmem la reserva de seguida.',
-    res_wa_btn: 'Obrir WhatsApp',
-  },
-  en: {
-    nav_carta: 'Menu',
-    nav_menu: 'Daily Menu',
-    nav_pizza: 'Pizza of the Month',
-    nav_historia: 'Our Story',
-    nav_reservas: 'Reservations',
-    nav_contacto: 'Contact',
-    nav_reservar: 'Book a table',
-    hero_eyebrow: 'Pizzeria Restaurant · Benlloc, Castellón',
-    hero_title: 'Authentic flavour,<br>Italian soul',
-    hero_sub: 'Artisan pizza, market cuisine and local produce.<br>In the heart of Plana Alta.',
-    hero_btn1: 'See the menu',
-    hero_btn2: 'Book a table',
-    takeaway: '🛵 Take Away available · Call us at',
-    carta_eyebrow: 'What we cook',
-    carta_title: 'Our Menu',
-    tab_vsab: 'Friday & Saturday',
-    tab_jdom: 'Thursday & Sunday',
-    tab_vinos: 'Wines & Vermouths',
-    menu_eyebrow: 'Monday to Friday',
-    menu_title: 'Daily Menu',
-    pizza_eyebrow: 'Exclusive · This month only',
-    pizza_title: 'Pizza of the Month',
-    historia_eyebrow: 'Who we are',
-    historia_title: 'Our Story',
-    reservas_eyebrow: 'We'll be waiting',
-    reservas_title: 'Book your Table',
-    contacto_eyebrow: 'Where we are',
-    contacto_title: 'Contact',
-    lunes: 'Monday', martes: 'Tuesday', miercoles: 'Wednesday',
-    jueves: 'Thursday', viernes: 'Friday', sabado: 'Saturday', domingo: 'Sunday',
-    cerrado: 'Closed', abierto: 'Open',
-    res_tel_title: 'By Phone',
-    res_tel_desc: 'Call us and we'll confirm availability immediately.',
-    res_tel_btn: 'Call now',
-    res_wa_title: 'By WhatsApp',
-    res_wa_desc: 'Send us a message and we'll confirm your reservation right away.',
-    res_wa_btn: 'Open WhatsApp',
-  },
-  fr: {
-    nav_carta: 'Carte',
-    nav_menu: 'Menu du Jour',
-    nav_pizza: 'Pizza du Mois',
-    nav_historia: 'Notre Histoire',
-    nav_reservas: 'Réservations',
-    nav_contacto: 'Contact',
-    nav_reservar: 'Réserver',
-    hero_eyebrow: 'Pizzeria Restaurant · Benlloc, Castellón',
-    hero_title: 'Saveur authentique,<br>âme italienne',
-    hero_sub: 'Pizza artisanale, cuisine de marché et produits locaux.<br>Au cœur de la Plana Alta.',
-    hero_btn1: 'Voir la carte',
-    hero_btn2: 'Réserver une table',
-    takeaway: '🛵 À emporter disponible · Appelez-nous au',
-    carta_eyebrow: 'Ce que nous cuisinons',
-    carta_title: 'Notre Carte',
-    tab_vsab: 'Vendredi & Samedi',
-    tab_jdom: 'Jeudi & Dimanche',
-    tab_vinos: 'Vins & Vermouths',
-    menu_eyebrow: 'Du lundi au vendredi',
-    menu_title: 'Menu du Jour',
-    pizza_eyebrow: 'Exclusive · Ce mois seulement',
-    pizza_title: 'Pizza du Mois',
-    historia_eyebrow: 'Qui nous sommes',
-    historia_title: 'Notre Histoire',
-    reservas_eyebrow: 'Nous vous attendons',
-    reservas_title: 'Réservez votre Table',
-    contacto_eyebrow: 'Où nous sommes',
-    contacto_title: 'Contact',
-    lunes: 'Lundi', martes: 'Mardi', miercoles: 'Mercredi',
-    jueves: 'Jeudi', viernes: 'Vendredi', sabado: 'Samedi', domingo: 'Dimanche',
-    cerrado: 'Fermé', abierto: 'Ouvert',
-    res_tel_title: 'Par Téléphone',
-    res_tel_desc: 'Appelez-nous et nous confirmons la disponibilité immédiatement.',
-    res_tel_btn: 'Appeler maintenant',
-    res_wa_title: 'Par WhatsApp',
-    res_wa_desc: 'Envoyez-nous un message et nous confirmons votre réservation.',
-    res_wa_btn: 'Ouvrir WhatsApp',
-  },
-  de: {
-    nav_carta: 'Speisekarte',
-    nav_menu: 'Tagesmenü',
-    nav_pizza: 'Pizza des Monats',
-    nav_historia: 'Unsere Geschichte',
-    nav_reservas: 'Reservierungen',
-    nav_contacto: 'Kontakt',
-    nav_reservar: 'Tisch reservieren',
-    hero_eyebrow: 'Pizzeria Restaurant · Benlloc, Castellón',
-    hero_title: 'Authentischer Geschmack,<br>italienische Seele',
-    hero_sub: 'Handgemachte Pizza, Marktküche und lokale Produkte.<br>Im Herzen der Plana Alta.',
-    hero_btn1: 'Speisekarte ansehen',
-    hero_btn2: 'Tisch reservieren',
-    takeaway: '🛵 Auch zum Mitnehmen · Rufen Sie uns an',
-    carta_eyebrow: 'Lo que cocinamos',
-    carta_title: 'Unsere Speisekarte',
-    tab_vsab: 'Freitag & Samstag',
-    tab_jdom: 'Donnerstag & Sonntag',
-    tab_vinos: 'Weine & Vermuts',
-    menu_eyebrow: 'Montag bis Freitag',
-    menu_title: 'Tagesmenü',
-    pizza_eyebrow: 'Exklusiv · Nur diesen Monat',
-    pizza_title: 'Pizza des Monats',
-    historia_eyebrow: 'Wer wir sind',
-    historia_title: 'Unsere Geschichte',
-    reservas_eyebrow: 'Wir erwarten Sie',
-    reservas_title: 'Tisch reservieren',
-    contacto_eyebrow: 'Dónde estamos',
-    contacto_title: 'Kontakt',
-    lunes: 'Montag', martes: 'Dienstag', miercoles: 'Mittwoch',
-    jueves: 'Donnerstag', viernes: 'Freitag', sabado: 'Samstag', domingo: 'Sonntag',
-    cerrado: 'Geschlossen', abierto: 'Geöffnet',
-    res_tel_title: 'Per Telefon',
-    res_tel_desc: 'Rufen Sie uns an und wir bestätigen die Verfügbarkeit sofort.',
-    res_tel_btn: 'Jetzt anrufen',
-    res_wa_title: 'Per WhatsApp',
-    res_wa_desc: 'Schreiben Sie uns und wir bestätigen Ihre Reservierung umgehend.',
-    res_wa_btn: 'WhatsApp öffnen',
-  }
+var translations={
+es:{nav_carta:"Carta",nav_menu:"Menú del Día",nav_pizza:"Pizza del Mes",nav_historia:"Nuestra Historia",nav_reservas:"Reservas",nav_contacto:"Contacto",tab_vsab:"Viernes &amp; Sábado",tab_jdom:"Jueves &amp; Domingo",tab_vinos:"Vinos &amp; Vermuts",carta_eyebrow:"Lo que cocinamos",historia_eyebrow:"Quiénes somos",pizza_eyebrow:"Exclusiva · Solo este mes",reservas_eyebrow:"Te esperamos",contacto_eyebrow:"Dónde estamos",lunes:"Lunes",martes:"Martes",miercoles:"Miércoles",jueves:"Jueves",viernes:"Viernes",sabado:"Sábado",domingo:"Domingo"},
+ca:{nav_carta:"Carta",nav_menu:"Menú del Dia",nav_pizza:"Pizza del Mes",nav_historia:"La Nostra Història",nav_reservas:"Reserves",nav_contacto:"Contacte",tab_vsab:"Divendres &amp; Dissabte",tab_jdom:"Dijous &amp; Diumenge",tab_vinos:"Vins &amp; Vermuts",carta_eyebrow:"El que cuinem",historia_eyebrow:"Qui som",pizza_eyebrow:"Exclusiva · Només aquest mes",reservas_eyebrow:"T'esperem",contacto_eyebrow:"On estem",lunes:"Dilluns",martes:"Dimarts",miercoles:"Dimecres",jueves:"Dijous",viernes:"Divendres",sabado:"Dissabte",domingo:"Diumenge"},
+en:{nav_carta:"Menu",nav_menu:"Daily Menu",nav_pizza:"Pizza of the Month",nav_historia:"Our Story",nav_reservas:"Reservations",nav_contacto:"Contact",tab_vsab:"Friday &amp; Saturday",tab_jdom:"Thursday &amp; Sunday",tab_vinos:"Wines &amp; Vermouths",carta_eyebrow:"What we cook",historia_eyebrow:"Who we are",pizza_eyebrow:"Exclusive · This month only",reservas_eyebrow:"We'll be waiting",contacto_eyebrow:"Where we are",lunes:"Monday",martes:"Tuesday",miercoles:"Wednesday",jueves:"Thursday",viernes:"Friday",sabado:"Saturday",domingo:"Sunday"},
+fr:{nav_carta:"Carte",nav_menu:"Menu du Jour",nav_pizza:"Pizza du Mois",nav_historia:"Notre Histoire",nav_reservas:"Réservations",nav_contacto:"Contact",tab_vsab:"Vendredi &amp; Samedi",tab_jdom:"Jeudi &amp; Dimanche",tab_vinos:"Vins &amp; Vermouths",carta_eyebrow:"Ce que nous cuisinons",historia_eyebrow:"Qui nous sommes",pizza_eyebrow:"Exclusive · Ce mois seulement",reservas_eyebrow:"Nous vous attendons",contacto_eyebrow:"Où nous sommes",lunes:"Lundi",martes:"Mardi",miercoles:"Mercredi",jueves:"Jeudi",viernes:"Vendredi",sabado:"Samedi",domingo:"Dimanche"},
+de:{nav_carta:"Speisekarte",nav_menu:"Tagesmenü",nav_pizza:"Pizza des Monats",nav_historia:"Unsere Geschichte",nav_reservas:"Reservierungen",nav_contacto:"Kontakt",tab_vsab:"Freitag &amp; Samstag",tab_jdom:"Donnerstag &amp; Sonntag",tab_vinos:"Weine &amp; Vermuts",carta_eyebrow:"Was wir kochen",historia_eyebrow:"Wer wir sind",pizza_eyebrow:"Exklusiv · Nur diesen Monat",reservas_eyebrow:"Wir erwarten Sie",contacto_eyebrow:"Wo wir sind",lunes:"Montag",martes:"Dienstag",miercoles:"Mittwoch",jueves:"Donnerstag",viernes:"Freitag",sabado:"Samstag",domingo:"Sonntag"}
 };
 
-var currentLang = 'es';
-
-function toggleLang(e) {
-  e.stopPropagation();
-  var sel = document.getElementById('langSelector');
-  sel.classList.toggle('open');
-}
-document.addEventListener('click', function(e) {
-  var sel = document.getElementById('langSelector');
-  if (sel && !sel.contains(e.target)) {
-    sel.classList.remove('open');
-  }
-});
-
-function setLang(lang) {
-  var t = translations[lang];
-  if (!t) return;
-  var flags = {es:'🇪🇸',ca:'🇻🇦',en:'🇬🇧',fr:'🇫🇷',de:'🇩🇪'};
-  var codes = {es:'ES',ca:'VAL',en:'EN',fr:'FR',de:'DE'};
-
-  document.getElementById('currentFlag').textContent = flags[lang];
-  document.getElementById('currentLang').textContent = codes[lang];
-
-  // Cerrar dropdown
-  document.getElementById('langMenu').style.display='none';
-
-  // Aplicar traducciones a elementos con data-i18n
-  document.querySelectorAll('[data-i18n]').forEach(function(el) {
-    var key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) {
-      el.innerHTML = t[key];
-    }
+function setLang(lang){
+  var t=translations[lang];
+  if(!t) return;
+  var flags={es:"🇪🇸",ca:"🇻🇦",en:"🇬🇧",fr:"🇫🇷",de:"🇩🇪"};
+  var codes={es:"ES",ca:"VAL",en:"EN",fr:"FR",de:"DE"};
+  document.getElementById("currentFlag").textContent=flags[lang];
+  document.getElementById("currentLang").textContent=codes[lang];
+  document.getElementById("langMenu").style.display="none";
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    var key=el.getAttribute("data-i18n");
+    if(t[key]!==undefined) el.innerHTML=t[key];
   });
 }
 </script>
